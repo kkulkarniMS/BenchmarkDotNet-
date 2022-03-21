@@ -32,7 +32,7 @@ namespace BenchmarkDotNet
             ReadOnlySpan<char> featureListSpan = featureList.AsSpan();
             ReadOnlySpan<char> temp = null;
 
-            while (featureListSpan.IsEmpty)
+            while (!featureListSpan.IsEmpty)
             {
                 temp = ParseNext(ref featureListSpan, separator);
                 if (temp != ReadOnlySpan<char>.Empty)
@@ -41,7 +41,7 @@ namespace BenchmarkDotNet
                 }
             }
             temp = null;
-            while (marketListSpan.IsEmpty)
+            while (!marketListSpan.IsEmpty)
             {
                 temp = ParseNext(ref marketListSpan, separator);
                 if (temp != ReadOnlySpan<char>.Empty)
